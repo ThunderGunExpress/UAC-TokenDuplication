@@ -1,8 +1,9 @@
 # UAC-TokenDuplication
 UAC Bypass via Token Duplication.
 
-References:
+Sources:
 https://github.com/FuzzySecurity/PowerShell-Suite/blob/master/UAC-TokenMagic.ps1
+https://github.com/stephenfewer/ReflectiveDLLInjection
 https://github.com/enigma0x3/Misc-PowerShell-Stuff/blob/master/Invoke-TokenDuplication.ps1
 https://tyranidslair.blogspot.ca/2017/05/reading-your-way-around-uac-part-1.html
 https://tyranidslair.blogspot.ca/2017/05/reading-your-way-around-uac-part-2.html
